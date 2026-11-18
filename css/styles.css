@@ -620,7 +620,8 @@ button.pill:hover { filter: brightness(1.15); }
   font-weight: 600;
 }
 .project-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.project-actions .btn { padding: 0 8px; font-size: 12.5px; }
+.project-actions .btn { min-width: 0; padding: 0 8px; font-size: 12.5px; }
+.project-actions .btn span { overflow: hidden; text-overflow: ellipsis; }
 .project-value { font-size: 20px; font-weight: 800; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
 .project-meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
 .project-meta .small { display: inline-flex; align-items: center; gap: 5px; }

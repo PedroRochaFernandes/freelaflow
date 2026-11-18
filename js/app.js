@@ -481,8 +481,8 @@
       <div class="bar-track ${pct >= 100 ? 'done' : ''}"><span style="width:${pct}%"></span></div>
       <div class="project-meta"><span class="muted small">${money(received)} recebido · ${pct.toFixed(0)}%</span>${deadlineBadge(p)}</div>
       <div class="project-actions">
-        <button class="btn ghost sm" data-action="tx-new" data-type="receita" data-project="${p.id}">${icon('plus', 15)}<span>Registrar pagamento</span></button>
-        <button class="btn ghost sm" data-action="tx-filter-project" data-id="${p.id}">${icon('swap', 15)}<span>Ver lançamentos</span></button>
+        <button class="btn ghost sm" data-action="tx-new" data-type="receita" data-project="${p.id}" title="Registrar um pagamento deste freelance">${icon('plus', 15)}<span>Pagamento</span></button>
+        <button class="btn ghost sm" data-action="tx-filter-project" data-id="${p.id}" title="Ver os lançamentos deste freelance">${icon('swap', 15)}<span>Histórico</span></button>
       </div>
       <select class="status-select" data-change="project-status" data-id="${p.id}" aria-label="Mover freelance">
         ${Store.PROJECT_STATUS.map((s) => `<option value="${s.value}" ${s.value === p.status ? 'selected' : ''}>${s.label}</option>`).join('')}

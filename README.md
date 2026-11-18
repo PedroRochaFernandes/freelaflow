@@ -1,77 +1,126 @@
-# FreelaFlow 💸
+<div align="center">
+
+![FreelaFlow: controle financeiro para devs freelancers](docs/social-card.png)
+
+# FreelaFlow
 
 **Controle financeiro feito para desenvolvedores freelancers.**
-Receitas, despesas, clientes, projetos e metas, tudo em um painel só. Sem cadastro, sem servidor, sem dependências.
+Receitas, despesas, clientes, freelances e metas em um só painel.
 
-> 🔗 **Acesse:** **[pedrorochafernandes.github.io/freelaflow](https://pedrorochafernandes.github.io/freelaflow/)**: abre com dados de exemplo, sem cadastro.
+[![Abrir o app](https://img.shields.io/badge/▶_Abrir_o_app-22dd6f?style=for-the-badge&labelColor=000000)](https://pedrorochafernandes.github.io/freelaflow/)
+&nbsp;
+[![Versão](https://img.shields.io/github/v/release/PedroRochaFernandes/freelaflow?style=for-the-badge&color=22dd6f&labelColor=000000&label=versão)](https://github.com/PedroRochaFernandes/freelaflow/releases)
 
-![Dashboard do FreelaFlow](docs/screenshot.png)
+![HTML5](https://img.shields.io/badge/HTML5-000?style=flat-square&logo=html5&logoColor=22dd6f)
+![CSS3](https://img.shields.io/badge/CSS3-000?style=flat-square&logo=css3&logoColor=22dd6f)
+![JavaScript](https://img.shields.io/badge/JavaScript_puro-000?style=flat-square&logo=javascript&logoColor=22dd6f)
+![Dependências](https://img.shields.io/badge/dependências-0-22dd6f?style=flat-square&labelColor=000)
+![Licença MIT](https://img.shields.io/badge/licença-MIT-22dd6f?style=flat-square&labelColor=000)
+
+_Abre direto com dados de exemplo. Sem cadastro, sem instalar nada._
+
+</div>
 
 ---
 
-## ✨ Funcionalidades
+## 💡 Por que eu criei
 
-| Tela | O que faz |
+Como dev freelancer, eu vivia a mesma confusão todo mês: o dinheiro entrava, mas eu não sabia direito **quanto era lucro**, **quanto precisava guardar para o imposto** e **qual cliente ainda estava me devendo**.
+
+Planilha resolvia pela metade. Então construí a ferramenta que eu queria usar, e aproveitei para me desafiar: **nenhum framework, nenhuma biblioteca**. Só os fundamentos da web.
+
+## ✨ O que ele faz
+
+| | |
 |---|---|
-| **Visão geral** | KPIs do mês (faturamento, despesas, lucro e valores a receber) com comparação ao mês anterior, gráfico de receitas × despesas dos últimos 6 meses, meta mensal com anel de progresso, reserva para impostos, **receita por tipo de freelance**, despesas por categoria, próximos recebimentos e ranking de clientes |
-| **Lançamentos** | Cadastro de receitas e despesas com **seleção do freelance realizado** (preenche cliente, categoria e descrição sozinho), status (pago/pendente/vencido), filtros por mês, status e freelance, busca e exportação para CSV (abre direto no Excel) |
-| **Clientes** | Cartões com contato, total faturado, valor a receber e número de freelances |
-| **Freelances** | Kanban (Proposta → Em andamento → Concluído) com tipo de serviço (landing page, e-commerce, SaaS…), barra de quanto já foi recebido, alerta de prazo e atalho para registrar pagamento |
-| **Ajustes** | Meta mensal, alíquota de imposto, tema claro/escuro, backup/restauração em JSON |
+| 📊 **Dashboard do mês** | Faturamento, despesas, lucro e margem, comparados com o mês anterior |
+| 🎯 **Meta + impostos** | Meta mensal com anel de progresso e reserva automática para impostos |
+| 🧩 **Freelance realizado** | Ao lançar um pagamento, você escolhe o trabalho e o app preenche cliente, categoria e descrição |
+| 📋 **Kanban de freelances** | Proposta → Em andamento → Concluído, com tipo de serviço, % já recebido e alerta de prazo |
+| 💼 **Receita por tipo de serviço** | Descubra se landing pages, e-commerces ou sistemas SaaS dão mais retorno |
+| ⏰ **Contas a receber** | Pagamentos pendentes e vencidos, com botão "Recebido" |
+| 👥 **Clientes** | Total faturado, valor em aberto e número de freelances de cada um |
+| 📁 **Seus dados, sob seu controle** | Tudo fica no seu navegador. Exporta CSV (abre no Excel) e backup em JSON |
 
-**Extras:** visual preto e verde (com opção de tema claro), layout responsivo (no celular a navegação vai para a barra inferior), atalho <kbd>N</kbd> para novo lançamento, dados de exemplo gerados a partir da data atual, acessível por teclado e respeitando `prefers-reduced-motion`.
+## 📸 Telas
 
-## 🛠️ Tecnologias
+| Freelances | Lançamentos |
+|---|---|
+| ![Kanban de freelances](docs/freelances.png) | ![Lista de lançamentos](docs/lancamentos.png) |
 
-- **HTML, CSS e JavaScript puros**, sem frameworks e sem etapa de build
-- **Gráficos em SVG feitos à mão** (barras, rosca e anel), sem Chart.js nem bibliotecas externas
-- **CSS moderno**: design tokens em custom properties (paleta preto + verde), `color-mix()`, grid, `<dialog>` nativo
-- **localStorage** para persistência: os dados nunca saem do navegador do usuário
-- `Intl.NumberFormat` / `toLocaleDateString` para moeda e datas em pt-BR
+<p align="center"><img src="docs/mobile.png" alt="FreelaFlow no celular" width="360"></p>
 
-## 📁 Estrutura
+## 🛠️ Destaques técnicos
+
+- **Zero dependências:** HTML, CSS e JavaScript puros, sem build. Abre com dois cliques no `index.html`
+- **Gráficos em SVG feitos à mão:** barras, rosca e anel de progresso, calculados com regra de três e `stroke-dasharray` (sem Chart.js)
+- **Estado centralizado + padrão Observer:** toda alteração passa por um `Store`, que salva e avisa a interface para se redesenhar
+- **Renderização declarativa:** cada tela é uma função que transforma dados em HTML, no mesmo espírito dos componentes do React
+- **Delegação de eventos:** um único listener atende o app inteiro via `data-action`
+- **Formulários guiados por configuração:** um único `openForm({ fields })` gera todos os formulários
+- **Segurança:** todo texto do usuário é escapado antes de ir para a tela (prevenção de XSS)
+- **Design system com tokens CSS:** tema preto e verde e tema claro trocados por um único atributo
+- **Responsivo e acessível:** navegação inferior no celular, tabela que vira cartões, `<dialog>` nativo, foco visível e `prefers-reduced-motion`
+
+### Arquitetura
+
+```mermaid
+flowchart LR
+    U([Clique do usuário]) --> A[app.js<br/>ações e telas]
+    A -->|add / update / remove| S[(store.js<br/>estado único)]
+    S -->|salva| L[(localStorage)]
+    S -->|avisa: mudei!| A
+    A -->|render| V[Interface]
+    C[charts.js<br/>SVG] --> V
+```
 
 ```
 freelaflow/
-├── index.html        # casca da aplicação (sidebar, topbar, modal)
+├── index.html        # estrutura da aplicação
 ├── css/styles.css    # design tokens, componentes e responsividade
 └── js/
-    ├── utils.js      # formatação, datas, ícones SVG
-    ├── store.js      # estado, persistência, consultas e dados de exemplo
-    ├── charts.js     # gráficos SVG (barras, rosca, anel)
-    └── app.js        # views, formulários e eventos
+    ├── utils.js      # moeda, datas, ícones e segurança (escape de HTML)
+    ├── store.js      # estado, persistência, cálculos e dados de exemplo
+    ├── charts.js     # gráficos em SVG
+    └── app.js        # telas, formulários e eventos
 ```
-
-A arquitetura segue um fluxo simples e previsível: **Store → render → eventos delegados → Store**.
-Cada alteração passa pelo `Store`, que salva no `localStorage` e avisa os assinantes para redesenhar a tela.
 
 ## 🚀 Como rodar
 
-Não precisa instalar nada. Basta abrir o `index.html` no navegador.
+Não precisa instalar nada: baixe o projeto e abra o `index.html` no navegador.
 
-Se preferir um servidor local:
+```bash
+git clone https://github.com/PedroRochaFernandes/freelaflow.git
+```
+
+Se preferir um servidor local, rode este comando dentro da pasta e acesse `http://localhost:5173`:
 
 ```bash
 python -m http.server 5173
 ```
 
-E acesse `http://localhost:5173`.
+## 🧠 O que eu aprendi
 
-## 🌐 Deploy no GitHub Pages
-
-1. Crie um repositório `freelaflow` e envie os arquivos
-2. Em **Settings → Pages**, selecione a branch `main` e a pasta `/ (root)`
-3. Em ~1 minuto o app estará em `https://<seu-usuario>.github.io/freelaflow`
-
-(Também funciona arrastando a pasta no [Netlify Drop](https://app.netlify.com/drop) ou com `vercel` na pasta.)
+- Como frameworks funcionam por baixo: estado, re-renderização e eventos, implementados do zero
+- Que `new Date('2026-11-16')` é interpretado em UTC e pode virar o dia anterior no Brasil
+- Desenhar visualização de dados com SVG puro e deixá-la responsiva com `viewBox`
+- Montar um design system pequeno, mas consistente, só com variáveis CSS
 
 ## 🗺️ Próximos passos
 
 - [ ] Lançamentos recorrentes automáticos (assinaturas, manutenção mensal)
-- [ ] Geração de recibo/orçamento em PDF
-- [ ] Sincronização na nuvem (Supabase/Firebase) com login
-- [ ] PWA instalável e funcionando offline
+- [ ] Recibos e orçamentos em PDF
+- [ ] Sincronização na nuvem com login
+- [ ] PWA instalável, funcionando offline
+
+Sugestões e feedbacks são muito bem-vindos: abra uma [issue](https://github.com/PedroRochaFernandes/freelaflow/issues)!
 
 ---
 
-Feito por **Pedro Rocha** ([@PedroRochaFernandes](https://github.com/PedroRochaFernandes)). Se curtir, deixa uma ⭐!
+<div align="center">
+
+Feito por **Pedro Rocha** · [GitHub](https://github.com/PedroRochaFernandes)
+
+Se o projeto te ajudou ou te inspirou, deixa uma ⭐
+
+</div>
